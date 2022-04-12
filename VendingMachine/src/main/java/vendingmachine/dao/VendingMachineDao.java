@@ -35,4 +35,6 @@ public interface VendingMachineDao {
 
     //Sell a drink
     boolean sellDrink(Drink drink) throws VendingMachineDaoEx;
+
+    List<Drink> getAllPurchasableDrinks() throws VendingMachineDaoEx;
 }

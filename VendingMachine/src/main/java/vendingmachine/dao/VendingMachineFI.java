@@ -8,6 +8,8 @@ import vendingmachine.dto.Drink;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
+
 import vendingmachine.dto.Change;
 
 /**
@@ -53,6 +55,17 @@ public class VendingMachineFI implements VendingMachineDao {
     public List<Drink> getAllDrinks() throws VendingMachineDaoEx {
         //loadDrinks();
         return new ArrayList(drinks.values());
+    }
+
+    @Override
+    public List<Drink> getAllPurchasableDrinks() throws VendingMachineDaoEx {
+        List<Drink> list = getAllDrinks();
+
+        List<Drink> purchasableDrinks = list.stream()
+                .filter((Drink) -> Drink.getPricePenny() <= userMoney.getTotal())
+                .collect(Collectors.toList());
+
+        return purchasableDrinks;
     }
 
     @Override
