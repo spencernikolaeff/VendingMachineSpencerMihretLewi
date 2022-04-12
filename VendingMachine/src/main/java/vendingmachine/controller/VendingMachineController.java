@@ -55,6 +55,7 @@ public class VendingMachineController {
                     break;
                 case 6:
                     listAvailableDrinks();
+                    break;
                 case 0:
                     exit();
                     programRunning = false;
