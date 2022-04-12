@@ -32,9 +32,14 @@ public class VendingMachineView {
         return io.readInt("Please select from the above choices.", 0, 5);
     }
 
+    //used to list individual drink
     public String listTheProduct() {
-        return io.readString("Please enter the product list :");
+        return io.readString("Please enter the drinkName :");
 
+    }
+    
+    public void displayDrink(Drink name) {
+        io.print("[Name] " + name.getName() + " [Price] " + name.getPricePenny() + " [Quantity] " + name.getQuantity());
     }
 
     public String EnterMoney() {
@@ -47,8 +52,8 @@ public class VendingMachineView {
 
     }
 
-    public void displayAddDrinkBanner() {
-        io.print("====  Add Drink ====");
+    public void displayViewDrinkBanner() {
+        io.print("====  View Drink ====");
     }
 
     public void displayAddSuccessBanner() {

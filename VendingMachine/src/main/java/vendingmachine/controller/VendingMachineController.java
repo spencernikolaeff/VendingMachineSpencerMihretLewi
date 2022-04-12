@@ -23,7 +23,7 @@ public class VendingMachineController {
     
     boolean programRunning = true;
     
-    public void run() {
+    public void run() throws VendingMachineDaoEx {
         
         
         while(programRunning) {
@@ -63,7 +63,7 @@ public class VendingMachineController {
     }
     
     //list drinks
-    private void listDrinks() {
+    private void listDrinks() throws VendingMachineDaoEx {
         view.displayAllDrinkBanner();
         view.displayAllDrink(dao.getAllDrinks());
     }
@@ -79,8 +79,9 @@ public class VendingMachineController {
     }
     
     //view drink
-    private void viewDrink() {
-        
+    private void viewDrink() throws VendingMachineDaoEx {
+        view.displayViewDrinkBanner();
+        view.displayDrink(dao.getDrink(view.listTheProduct()));
     }
     
     //purchase drink
