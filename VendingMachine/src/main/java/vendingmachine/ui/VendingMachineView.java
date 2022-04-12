@@ -5,6 +5,7 @@
 package vendingmachine.ui;
 
 import java.util.List;
+import vendingmachine.dto.Change;
 import vendingmachine.dto.Drink;
 
 /**
@@ -28,9 +29,10 @@ public class VendingMachineView {
         io.print("4. View Drink");
         io.print("5. Purchase drink ");
         io.print("6. Affordable Drinks");
+        io.print("7. Withdraw Money");
         io.print("0. Exit");
 
-        return io.readInt("Please select from the above choices.", 0, 6);
+        return io.readInt("Please select from the above choices.", 0, 7);
     }
 
     //used to list individual drink
@@ -129,9 +131,15 @@ public class VendingMachineView {
         io.print("Error Message: " + error);
     }
      public void withdrawMoneBanner() {
-        System.out.println("==== withdraw money ====");
+        System.out.println("==== Withdraw Money ====");
     }
      public void showAllCoineBanner() {
-        System.out.println("==== show the total value  ====");
+        System.out.println("==== Your Coins  ====");
     }
+     
+    //error message
+     public void errorNotEnoughMoney(boolean enough, Change withdraw){
+         
+     }
+    
 }
