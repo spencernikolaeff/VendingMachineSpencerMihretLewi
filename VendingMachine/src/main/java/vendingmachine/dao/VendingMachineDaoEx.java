@@ -8,6 +8,13 @@ package vendingmachine.dao;
  *
  * @author 17202
  */
-public class VendingMachineDaoEx {
-    
+public class VendingMachineDaoEx extends Exception {
+    public VendingMachineDaoEx(String message) {
+        super(message);
+    }
+
+    public VendingMachineDaoEx(String message, Throwable cause) {
+        super(message, cause);
+    }
+
 }
