@@ -19,8 +19,9 @@ public class Drink {
     private int pricePenny; //pennies
     private Change inChange;
     private int quantity;
+    private boolean inStock;
     
-    private String id; //optional
+//    private String id; //optional
     
     //basic constructor
     public Drink(String name){
@@ -48,6 +49,10 @@ public class Drink {
         this.pricePenny = price;
         this.quantity = amount;
         this.inChange = new Change(price);
+        //variable to check if quantity > 0
+        if(amount > 0) {
+            inStock = true;
+        }
         //this.id = id; //optional
     }
     
@@ -71,14 +76,22 @@ public class Drink {
         return inChange;
     }
     
-    //optional
-    public String getId() {
-        return id;
+    public boolean checkStock() {
+        if(inStock) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
-    public void setId(String id) {
-        this.id = id;
-    }
+    //optional
+//    public String getId() {
+//        return id;
+//    }
+//    
+//    public void setId(String id) {
+//        this.id = id;
+//    }
     
     //setters
     //
@@ -96,6 +109,11 @@ public class Drink {
 
     public void setQuantity(int quantity){
         this.quantity = quantity;
+        if(this.quantity == 0) {
+            this.inStock = false;
+        } else {
+            this.inStock = true;
+        }
     }
 
     public void setChange(Change change) {

@@ -52,8 +52,8 @@ public class VendingMachineView {
         return userChoice.equals("y") || userChoice.equals("Y");
     }
 
-    public String EnterMoney() {
-        return io.readString("Please add money :");
+    public int EnterMoney() {
+        return io.readInt("Please add money :");
 
     }
 
@@ -148,10 +148,20 @@ public class VendingMachineView {
     //error message
     public void withdrawMoney(boolean enough, Change withdraw) {
         if (enough) {
-            System.out.println("==== Transaction is successfull. Your change is : " + withdraw.getChangeString());
-            System.out.println("You've recieved: " + withdraw.getChangeFullString());
+            System.out.println("==== Transaction is successfull ====");
+            System.out.println("You're Change is: " + withdraw.getChangeFullString());
         } else {
             System.out.println("==== Transaction is unsuccessfull ====");
+        }
+    }
+    
+    //check remaining balance at exit
+    public boolean exitWithdraw(Change hasMoney) {
+        if(hasMoney != null) {
+            System.out.println("Hold up! You forgot to take your money!");
+            return false;
+        } else {
+            return true;
         }
     }
 

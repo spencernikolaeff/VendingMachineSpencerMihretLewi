@@ -61,7 +61,6 @@ public class VendingMachineController {
                     break;
                 case 0:
                     exit();
-                    withdrawMoney();
                     programRunning = false;
                     break;
                 default:
@@ -96,7 +95,7 @@ public class VendingMachineController {
     
     //enter money
     private void enterMoney() {
-        dao.addMoney(Integer.parseInt(view.EnterMoney()));
+        dao.addMoney(view.EnterMoney());
     }
     
     //view balance
@@ -122,6 +121,9 @@ public class VendingMachineController {
     
     //exit
     private void exit() {
+        if(view.exitWithdraw(dao.exitWithdraw()) == false){
+            view.withdrawMoney(true, dao.exitWithdraw());
+        }
         view.exitMessage();
     }
     

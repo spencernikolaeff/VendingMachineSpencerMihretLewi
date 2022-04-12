@@ -30,13 +30,14 @@ public class VendingMachineFI implements VendingMachineDao {
 
     private Map<String, Drink> drinks = new HashMap<>();
     
-    Change userMoney = new Change(0);
+    private Change userMoney = new Change(0);
     
     //change method
 
     //method for adding money
     public void addMoney(int amount) {
-        this.userMoney.setTotal(userMoney.getTotal()+amount);
+        this.userMoney = new Change(amount);
+        //(this.userMoney).addCoins(amount);
     }
     
     //method for viewing money
@@ -60,6 +61,16 @@ public class VendingMachineFI implements VendingMachineDao {
     public Change withdrawMoneyChange(Double amount) {
         int value =  (int) (amount*100);
         return new Change(value);
+    }
+    
+    //for when the user still has money in the vending machine
+    public Change exitWithdraw() {
+        int totalReturned = userMoney.getTotal();
+        if(totalReturned > 0) {
+            return userMoney;
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -111,7 +122,9 @@ public class VendingMachineFI implements VendingMachineDao {
 
     @Override
     public boolean sellDrink(Drink drink) throws VendingMachineDaoEx {
-        if (userMoney.getTotal() > drink.getPricePenny()) {
+        //first half of if statement: check if user has at least enough money as the drink costs
+        //second half of if statement: check if the drink's quantity is greater than 0
+        if (userMoney.getTotal() >= drink.getPricePenny() && drink.checkStock()) {
             int temp = drink.getQuantity();
             drink.setQuantity(temp - 1);
             userMoney.setTotal(userMoney.getTotal() - drink.getPricePenny());
