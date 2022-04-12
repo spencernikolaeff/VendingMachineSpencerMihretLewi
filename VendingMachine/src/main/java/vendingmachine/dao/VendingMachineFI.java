@@ -34,6 +34,7 @@ public class VendingMachineFI implements VendingMachineDao {
     
     //change method
 
+    @Override
     //method for adding money
     public void addMoney(int amount) {
         this.userMoney.setTotal(userMoney.getTotal()+amount);
@@ -76,7 +77,6 @@ public class VendingMachineFI implements VendingMachineDao {
         return new ArrayList(drinks.values());
     }
 
-    @Override
     public List<Drink> getAllPurchasableDrinks() throws VendingMachineDaoEx {
         List<Drink> list = getAllDrinks();
 
