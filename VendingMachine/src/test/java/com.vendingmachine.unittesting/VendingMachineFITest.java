@@ -1,6 +1,8 @@
-package vendingmachine.dao;
+package com.vendingmachine.unittesting;
 
 import org.junit.jupiter.api.*;
+import vendingmachine.dao.VendingMachineDao;
+import vendingmachine.dao.VendingMachineFI;
 import vendingmachine.dto.Drink;
 
 import java.io.FileWriter;
@@ -94,6 +96,8 @@ class VendingMachineFITest {
 
     @Test
     public void testSellDrink() throws Exception {
+        testDao.addMoney(1000);
+
         // Create a drink
         Drink drink = new Drink("Coke");
         drink.setPrice(125);
@@ -103,6 +107,25 @@ class VendingMachineFITest {
         testDao.sellDrink(drink);
 
         int expected = 4;
+        int actual = drink.getQuantity();
+
+        //Checks to see if quantity decreases by 1 (sold 1 drink)
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSellDrinkNoMoney() throws Exception {
+        testDao.addMoney(1);
+
+        // Create a drink
+        Drink drink = new Drink("Coke");
+        drink.setPrice(125);
+        drink.setQuantity(5);
+
+        // call sell drink method
+        testDao.sellDrink(drink);
+
+        int expected = 5;
         int actual = drink.getQuantity();
 
         //Checks to see if quantity decreases by 1 (sold 1 drink)
