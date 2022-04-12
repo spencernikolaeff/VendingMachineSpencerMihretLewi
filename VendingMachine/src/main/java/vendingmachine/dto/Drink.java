@@ -26,12 +26,12 @@ public class Drink {
     }
     
     //full constructor
-    public Drink(String name, int price, int amount, String id) {
+    public Drink(String name, int price, int amount) {
         this.name = name;
         this.pricePenny = price;
         this.quantity = amount;
         this.inChange = new Change(price);
-        this.id = id; //optional
+        //this.id = id; //optional
     }
     
     //getters
