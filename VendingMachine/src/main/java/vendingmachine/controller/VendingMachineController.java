@@ -85,13 +85,16 @@ public class VendingMachineController {
     }
     
     //purchase drink
-    private void purchaseDrink() {
-        
+    private void purchaseDrink() throws VendingMachineDaoEx {
+        view.displayDrink(dao.getDrink(view.listTheProduct()));
+        if(view.BuyDrink() == true){
+            
+        }
     }
     
     //exit
     private void exit() {
-        
+        view.exitMessage();
     }
     
     //error message

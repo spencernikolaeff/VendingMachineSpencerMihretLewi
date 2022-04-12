@@ -15,7 +15,7 @@ public class Change {
     private int dimes;
     private int nickels;
     private int pennies;
-    private int totalCoins;
+    private double totalCoins;
     
     //constructor
     public Change(int penny) {
@@ -68,11 +68,17 @@ public class Change {
     }
     
     //total coins
-    public int getTotal() {
+    public double getTotal() {
         return totalCoins;
     }
     
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.totalCoins = total;
+    }
+    
+    //get change string format
+    public String getChangeString() {
+        String ret = String.valueOf(this.totalCoins/100);
+        return ret;
     }
 }
