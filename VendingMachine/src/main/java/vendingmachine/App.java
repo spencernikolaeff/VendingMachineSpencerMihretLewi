@@ -4,10 +4,16 @@
  */
 package vendingmachine;
 
+import vendingmachine.controller.VendingMachineController;
+import vendingmachine.dao.VendingMachineDaoEx;
+
 /**
  *
  * @author 17202
  */
 public class App {
-    
+    public static void main(String[] args) throws VendingMachineDaoEx {
+        VendingMachineController controller = new VendingMachineController();
+        controller.run();
+    }
 }
