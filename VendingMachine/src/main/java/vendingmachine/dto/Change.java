@@ -22,7 +22,7 @@ public class Change {
     private int dimes;
     private int nickels;
     private int pennies;
-    private double totalValue;
+    private int totalValue;
 
     private int numCoins;
     private Map<Coin, Integer> purse;
@@ -139,11 +139,11 @@ public class Change {
     }
 
     //total coins
-    public double getTotal() {
+    public int getTotal() {
         return totalValue;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(int total) {
         this.totalValue = total;
     }
 
@@ -151,6 +151,11 @@ public class Change {
     public String getChangeString() {
         String ret = String.valueOf(this.totalValue / 100);
         return ret;
+    }
+    
+    //get change with coin values
+    public String getChangeFullString() {
+        return "[Quarters] (" + this.quarters + ") [Dimes] (" + this.dimes + ") [Nickels] (" + this.nickels + ") [Pennies] (" + this.pennies + ")";
     }
 }
 

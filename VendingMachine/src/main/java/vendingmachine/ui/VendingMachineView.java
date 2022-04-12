@@ -139,11 +139,17 @@ public class VendingMachineView {
     public void showAllCoinBanner() {
         System.out.println("==== Your Coins  ====");
     }
+    
+    //prompt withdraw
+    public Double promptWithdraw() {
+        return io.readDouble("How much would you like to withdraw? (0.00) ");
+    }
 
     //error message
     public void withdrawMoney(boolean enough, Change withdraw) {
         if (enough) {
-            System.out.println("==== Transaction is successfull. Your change is : " + withdraw.getTotal());
+            System.out.println("==== Transaction is successfull. Your change is : " + withdraw.getChangeString());
+            System.out.println("You've recieved: " + withdraw.getChangeFullString());
         } else {
             System.out.println("==== Transaction is unsuccessfull ====");
         }

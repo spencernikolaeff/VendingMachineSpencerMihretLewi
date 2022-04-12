@@ -74,7 +74,8 @@ public class VendingMachineController {
     
     private void withdrawMoney() {
         view.withdrawMoneyBanner();
-        view.withdrawMoney();
+        Double amount = view.promptWithdraw(); //maybe use bigdecimal here
+        view.withdrawMoney(dao.withdrawMoneyAmount(amount), dao.withdrawMoneyChange(amount));
     }
     
     //stream method

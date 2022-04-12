@@ -45,14 +45,21 @@ public class VendingMachineFI implements VendingMachineDao {
     }
     
     //method for retrieving money
-    public boolean withdrawMoney(int amount) {
+    public boolean withdrawMoneyAmount(Double amount) {
+        amount = amount*100;
         if(amount > userMoney.getTotal()) {
             return false;
         } else {
-            Change temp = new Change(amount);
+            int newValue = (int) (userMoney.getTotal() - amount);
+            Change temp = new Change(newValue);
             userMoney = temp;
             return true;
         }
+    }
+    
+    public Change withdrawMoneyChange(Double amount) {
+        int value =  (int) (amount*100);
+        return new Change(value);
     }
 
     @Override
