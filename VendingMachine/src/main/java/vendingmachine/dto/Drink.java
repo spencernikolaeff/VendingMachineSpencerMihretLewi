@@ -69,19 +69,19 @@ public class Drink {
     //--------i couldn't figure out Java factory classes
     //maybe not necessary since we can just load the drinks from a file anyways
     //
-    private void setName(String name){
+    public void setName(String name){
         this.name = name;
     }
     
-    private void setPrice(int price){
+    public void setPrice(int price){
         this.pricePenny = price;
     }
     
-    private void setQuantity(int quantity){
+    public void setQuantity(int quantity){
         this.quantity = quantity;
     }
     
-    private void setChange(Change change) {
+    public void setChange(Change change) {
         this.inChange = change;
     }
     

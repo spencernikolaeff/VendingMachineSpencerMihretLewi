@@ -1,6 +1,7 @@
 package vendingmachine.controller;
 
 import vendingmachine.dao.VendingMachineFI;
+import vendingmachine.dto.Change;
 import vendingmachine.ui.UserIO;
 import vendingmachine.ui.UserIOConsoleImpl;
 import vendingmachine.ui.VendingMachineView;
@@ -22,6 +23,7 @@ public class VendingMachineController {
     boolean programRunning = true;
     
     public void run() {
+        
         
         while(programRunning) {
             
@@ -63,7 +65,7 @@ public class VendingMachineController {
     
     //enter money
     private void enterMoney() {
-        
+        dao.addMoney(view.EnterMoney());
     }
     
     //view balance

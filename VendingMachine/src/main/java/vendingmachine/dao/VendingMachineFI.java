@@ -8,6 +8,7 @@ import vendingmachine.dto.Drink;
 
 import java.io.*;
 import java.util.*;
+import vendingmachine.dto.Change;
 
 /**
  *
@@ -26,6 +27,14 @@ public class VendingMachineFI implements VendingMachineDao {
     }
 
     private Map<String, Drink> drinks = new HashMap<>();
+    
+    Change userMoney = new Change(0);
+    
+    //change method
+    
+    public void addMoney(int amount) {
+        this.userMoney.setTotal(userMoney.getTotal()+amount);
+    }
 
     @Override
     public Drink addDrink(Drink drink) {
