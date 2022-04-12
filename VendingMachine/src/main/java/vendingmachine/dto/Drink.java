@@ -6,6 +6,8 @@ package vendingmachine.dto;
 
 import vendingmachine.dto.Change;
 
+import java.util.Objects;
+
 /**
  *
  * @author Spencer
@@ -23,6 +25,20 @@ public class Drink {
     //basic constructor
     public Drink(String name){
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Drink drink = (Drink) o;
+        return name.equals(drink.name) && pricePenny == drink.pricePenny &&
+                quantity == drink.quantity;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, pricePenny, quantity);
     }
     
     //full constructor
@@ -72,15 +88,15 @@ public class Drink {
     public void setName(String name){
         this.name = name;
     }
-    
+
     public void setPrice(int price){
         this.pricePenny = price;
     }
-    
+
     public void setQuantity(int quantity){
         this.quantity = quantity;
     }
-    
+
     public void setChange(Change change) {
         this.inChange = change;
     }
