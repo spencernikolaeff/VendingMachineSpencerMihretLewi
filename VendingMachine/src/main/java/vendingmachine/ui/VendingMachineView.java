@@ -128,5 +128,10 @@ public class VendingMachineView {
     public void errorMessage(String error){
         io.print("Error Message: " + error);
     }
-    
+     public void withdrawMoneBanner() {
+        System.out.println("==== withdraw money ====");
+    }
+     public void showAllCoineBanner() {
+        System.out.println("==== show the total value  ====");
+    }
 }
