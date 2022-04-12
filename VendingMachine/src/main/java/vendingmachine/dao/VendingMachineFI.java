@@ -19,7 +19,7 @@ public class VendingMachineFI implements VendingMachineDao {
     public static final String DELIMITER = "::";
 
     public VendingMachineFI(){
-        DRINKS_FILE = "drinks.txt";
+        DRINKS_FILE = "AllDrinks.txt";
     }
 
     public VendingMachineFI(String textFile){
@@ -43,29 +43,29 @@ public class VendingMachineFI implements VendingMachineDao {
 
     @Override
     public Drink addDrink(Drink drink) throws VendingMachineDaoEx {
-        loadDrinks();
+        //loadDrinks();
         Drink newDrink = drinks.put(drink.getName(), drink);
-        writeDrinks();
+        //writeDrinks();
         return newDrink;
     }
 
     @Override
     public List<Drink> getAllDrinks() throws VendingMachineDaoEx {
-        loadDrinks();
+        //loadDrinks();
         return new ArrayList(drinks.values());
     }
 
     @Override
     public Drink getDrink(String name) throws VendingMachineDaoEx {
-        loadDrinks();
+        //loadDrinks();
         return drinks.get(name);
     }
 
     @Override
     public Drink removeDrink(String name) throws VendingMachineDaoEx  {
-        loadDrinks();
+        //loadDrinks();
         Drink removedDrink = drinks.remove(name);
-        writeDrinks();
+        //writeDrinks();
         return removedDrink;
     }
 

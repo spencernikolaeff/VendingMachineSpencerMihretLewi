@@ -22,10 +22,10 @@ public class VendingMachineView {
     //main menu
     public int printMenuAndGet() {
         io.print("Main Menu");
-        io.print("1. List drink");
-        io.print("2. View balance");
-        io.print("3. View drink ");
-        io.print("4. Enter Money");
+        io.print("1. List All Drinks");
+        io.print("2. Enter Money");
+        io.print("3. View Balance");
+        io.print("4. View Drink");
         io.print("5. Purchase drink ");
         io.print("0. Exit");
 
