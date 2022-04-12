@@ -1,5 +1,6 @@
 package vendingmachine.controller;
 
+import vendingmachine.dao.VendingMachineDaoEx;
 import vendingmachine.dao.VendingMachineFI;
 import vendingmachine.dto.Change;
 import vendingmachine.ui.UserIO;
@@ -17,7 +18,7 @@ import vendingmachine.ui.VendingMachineView;
  */
 public class VendingMachineController {
     UserIO uio = new UserIOConsoleImpl();
-    private VendingMachineFI dao = new VendingMachineDaoFI();
+    private VendingMachineFI dao = new VendingMachineFI();
     private VendingMachineView view = new VendingMachineView(uio);
     
     boolean programRunning = true;
@@ -26,8 +27,11 @@ public class VendingMachineController {
         
         
         while(programRunning) {
-            
-            dao.loadDrinks();
+            try {
+                dao.loadDrinks();
+            } catch (VendingMachineDaoEx e) {
+                view.displayErrorMessage(e.getMessage());
+            }
             int choice = view.printMenuAndGet();
             
             switch(choice) {
@@ -65,7 +69,7 @@ public class VendingMachineController {
     
     //enter money
     private void enterMoney() {
-        dao.addMoney(view.EnterMoney());
+        dao.addMoney(Integer.parseInt(view.EnterMoney()));
     }
     
     //view balance

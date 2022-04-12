@@ -104,7 +104,7 @@ public class VendingMachineFI implements VendingMachineDao {
         return drinkFromFile;
     }
 
-    private void loadDrinks() throws VendingMachineDaoEx {
+    public void loadDrinks() throws VendingMachineDaoEx {
         Scanner scanner;
 
         try {

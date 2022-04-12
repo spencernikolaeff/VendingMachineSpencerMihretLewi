@@ -64,5 +64,9 @@ public class VendingMachineView {
         }
         io.readString("Press Enter to continue.");
     }
+    
+    public void displayErrorMessage(String error) {
+        System.out.println("Recieved Error: " + error);
+    }
 
 }
