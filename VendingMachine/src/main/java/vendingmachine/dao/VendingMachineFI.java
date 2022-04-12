@@ -37,35 +37,35 @@ public class VendingMachineFI implements VendingMachineDao {
     }
 
     @Override
-    public Drink addDrink(Drink drink) {
-//        loadRoster();
+    public Drink addDrink(Drink drink) throws VendingMachineDaoEx {
+        loadDrinks();
         Drink newDrink = drinks.put(drink.getName(), drink);
-//        writeRoster();
+        writeDrinks();
         return newDrink;
     }
 
     @Override
-    public List<Drink> getAllDrinks() {
-//        loadRoster();
+    public List<Drink> getAllDrinks() throws VendingMachineDaoEx {
+        loadDrinks();
         return new ArrayList(drinks.values());
     }
 
     @Override
-    public Drink getDrink(String name) {
-//        loadRoster();
+    public Drink getDrink(String name) throws VendingMachineDaoEx {
+        loadDrinks();
         return drinks.get(name);
     }
 
     @Override
-    public Drink removeDrink(String name) {
-//        loadRoster();
+    public Drink removeDrink(String name) throws VendingMachineDaoEx  {
+        loadDrinks();
         Drink removedDrink = drinks.remove(name);
-//        writeRoster();
+        writeDrinks();
         return removedDrink;
     }
 
     @Override
-    public Drink stockDrink(Drink drink, int quantity) {
+    public Drink stockDrink(Drink drink, int quantity) throws VendingMachineDaoEx {
         int temp = drink.getQuantity();
         drink.setQuantity(temp + quantity);
 
@@ -73,7 +73,7 @@ public class VendingMachineFI implements VendingMachineDao {
     }
 
     @Override
-    public Drink sellDrink(Drink drink) {
+    public Drink sellDrink(Drink drink) throws VendingMachineDaoEx {
         int temp = drink.getQuantity();
         drink.setQuantity(temp--);
 

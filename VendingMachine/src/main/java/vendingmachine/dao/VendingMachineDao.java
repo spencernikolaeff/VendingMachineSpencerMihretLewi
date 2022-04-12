@@ -15,24 +15,24 @@ import java.util.List;
 public interface VendingMachineDao {
 
     //Add drink
-    Drink addDrink(Drink drink);
+    Drink addDrink(Drink drink) throws VendingMachineDaoEx;
 
 
     //List all drinks
-    List<Drink> getAllDrinks();
+    List<Drink> getAllDrinks() throws VendingMachineDaoEx;
 
 
     //Get drink
-    Drink getDrink(String name);
+    Drink getDrink(String name) throws VendingMachineDaoEx;
 
 
     //Remove drink
-    Drink removeDrink(String name);
+    Drink removeDrink(String name) throws VendingMachineDaoEx;
 
 
     //Stock drink
-    Drink stockDrink(Drink drink, int quantity);
+    Drink stockDrink(Drink drink, int quantity) throws VendingMachineDaoEx;
 
     //Sell a drink
-    Drink sellDrink(Drink drink);
+    Drink sellDrink(Drink drink) throws VendingMachineDaoEx;
 }
