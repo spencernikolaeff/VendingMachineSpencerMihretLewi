@@ -73,7 +73,8 @@ public class VendingMachineController {
     }
     
     private void withdrawMoney() {
-        
+        view.withdrawMoneyBanner();
+        view.withdrawMoney();
     }
     
     //stream method

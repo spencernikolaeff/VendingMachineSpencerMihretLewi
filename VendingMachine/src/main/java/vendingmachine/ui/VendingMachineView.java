@@ -130,15 +130,15 @@ public class VendingMachineView {
     public void errorMessage(String error){
         io.print("Error Message: " + error);
     }
-     public void withdrawMoneBanner() {
+     public void withdrawMoneyBanner() {
         System.out.println("==== Withdraw Money ====");
     }
-     public void showAllCoineBanner() {
+     public void showAllCoinBanner() {
         System.out.println("==== Your Coins  ====");
     }
      
     //error message
-     public void errorNotEnoughMoney(boolean enough, Change withdraw){
+     public void withdrawMoney(boolean enough, Change withdraw){
          
      }
     
