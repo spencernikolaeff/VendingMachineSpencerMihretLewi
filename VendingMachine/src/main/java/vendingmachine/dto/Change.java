@@ -4,81 +4,176 @@
  */
 package vendingmachine.dto;
 
+import java.math.BigDecimal;
+import java.util.Map;
+
 /**
  *
  * @author Spencer
  */
 public class Change {
-    
+
+    public enum Coin {
+        QUARTER, DIME, NICKEL, PENNY, EMPTY
+    }
+
     //attributes (denominations of coins)
     private int quarters;
     private int dimes;
     private int nickels;
     private int pennies;
-    private double totalCoins;
-    
+    private double totalValue;
+
+    private int numCoins;
+    private Map<Coin, Integer> purse;
+
     //constructor
     public Change(int penny) {
-        this.totalCoins = penny;
-        while(penny > 0) {
-            if(penny >= 25) {
+        numCoins = 0;
+        this.totalValue = penny;
+        addCoins(penny);
+    }
+
+    //purse method for adding coins
+    public void addCoins(int penny) {
+        this.totalValue = this.totalValue + penny;
+        while (penny > 0) {
+            if (penny >= 25) {
+                int numQ = purse.get(Coin.QUARTER.values())+1;
+                purse.put(Coin.QUARTER, numQ);
+                penny = penny - 25;
                 this.quarters++;
-            } else if(penny >= 10 && penny < 25) {
+                this.numCoins++;
+            } else if (penny >= 10 && penny < 25) {
+                int numD = purse.get(Coin.DIME.values())+1;
+                purse.put(Coin.DIME, numD);
+                penny = penny - 10;
                 this.dimes++;
-            } else if(penny >= 5 && penny < 10) {
+                this.numCoins++;
+            } else if (penny >= 5 && penny < 10) {
+                int numN = purse.get(Coin.NICKEL.values())+1;
+                purse.put(Coin.NICKEL, numN);
+                penny = penny - 5;
                 this.nickels++;
-            } else if(penny >= 1 && penny < 5) {
+                this.numCoins++;
+            } else if (penny >= 1 && penny < 5) {
+                int numP = purse.get(Coin.PENNY.values())+1;
+                purse.put(Coin.PENNY, numP);
+                penny = penny - 1;
                 this.pennies++;
+                this.numCoins++;
             }
         }
     }
     
+    //purse method for spending coins
+    public void spendCoins(int penny) {
+        this.totalValue = this.totalValue - penny;
+        while (penny > 0) {
+            if (penny >= 25) {
+                int numQ = purse.get(Coin.QUARTER.values())-1;
+                purse.put(Coin.QUARTER, numQ);
+                penny = penny - 25;
+                this.quarters--;
+                this.numCoins--;
+            } else if (penny >= 10 && penny < 25) {
+                int numD = purse.get(Coin.DIME.values())-1;
+                purse.put(Coin.DIME, numD);
+                penny = penny - 10;
+                this.dimes--;
+                this.numCoins--;
+            } else if (penny >= 5 && penny < 10) {
+                int numN = purse.get(Coin.NICKEL.values())-1;
+                purse.put(Coin.NICKEL, numN);
+                penny = penny - 5;
+                this.nickels--;
+                this.numCoins--;
+            } else if (penny >= 1 && penny < 5) {
+                int numP = purse.get(Coin.PENNY.values())-1;
+                purse.put(Coin.PENNY, numP);
+                penny = penny - 1;
+                this.pennies--;
+                this.numCoins--;
+            }
+        }
+    }
+    
+    //get value as BigDecimal
+    public BigDecimal getValueBigDecimal() {
+        return BigDecimal.valueOf(totalValue/100);
+    }
+    
+
     //getters
     public int getQuarters() {
         return quarters;
     }
-    
+
     public int getDimes() {
         return dimes;
     }
-    
+
     public int getNickels() {
         return nickels;
     }
-    
+
     public int getPennies() {
         return pennies;
     }
-    
+
     //setters
     public void setQuarters(int num) {
         this.quarters = num;
     }
-    
+
     public void setDimes(int num) {
         this.dimes = num;
     }
-    
+
     public void setNickels(int num) {
         this.nickels = num;
     }
-    
+
     public void setPennies(int num) {
         this.pennies = num;
     }
-    
+
     //total coins
     public double getTotal() {
-        return totalCoins;
+        return totalValue;
     }
-    
+
     public void setTotal(double total) {
-        this.totalCoins = total;
+        this.totalValue = total;
     }
-    
+
     //get change string format
     public String getChangeString() {
-        String ret = String.valueOf(this.totalCoins/100);
+        String ret = String.valueOf(this.totalValue / 100);
         return ret;
     }
 }
+
+//        while(penny > 0) {
+//            if(penny >= 25) {
+//                purse[numCoins] = Coin.QUARTER;
+//                penny = penny - 25;
+//                this.quarters++;
+//                this.numCoins++;
+//            } else if(penny >= 10 && penny < 25) {
+//                purse[numCoins] = Coin.DIME;
+//                penny = penny - 10;
+//                this.dimes++;
+//                this.numCoins++;
+//            } else if(penny >= 5 && penny < 10) {
+//                purse[numCoins] = Coin.NICKEL;
+//                penny = penny - 5;
+//                this.nickels++;
+//                this.numCoins++;
+//            } else if(penny >= 1 && penny < 5) {
+//                purse[numCoins] = Coin.PENNY;
+//                penny = penny - 1;
+//                this.pennies++;
+//                this.numCoins++;
+//            }
+//        }

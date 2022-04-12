@@ -56,8 +56,12 @@ public class VendingMachineController {
                 case 6:
                     listAvailableDrinks();
                     break;
+                case 7:
+                    withdrawMoney();
+                    break;
                 case 0:
                     exit();
+                    withdrawMoney();
                     programRunning = false;
                     break;
                 default:
@@ -66,6 +70,10 @@ public class VendingMachineController {
             System.out.println();
             System.out.println();
         }
+    }
+    
+    private void withdrawMoney() {
+        
     }
     
     //stream method

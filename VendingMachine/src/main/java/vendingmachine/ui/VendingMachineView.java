@@ -128,5 +128,5 @@ public class VendingMachineView {
     public void errorMessage(String error){
         io.print("Error Message: " + error);
     }
-
+    
 }
