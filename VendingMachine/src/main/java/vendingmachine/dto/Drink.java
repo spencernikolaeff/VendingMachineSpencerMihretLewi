@@ -4,15 +4,18 @@
  */
 package vendingmachine.dto;
 
+import vendingmachine.dto.Change;
+
 /**
  *
- * @author 17202
+ * @author Spencer
  */
-public abstract class Drink {
+public class Drink {
     
     //attributes
     private String name;
     private int pricePenny; //pennies
+    private Change inChange;
     private int quantity;
     
     //basic constructor
@@ -25,6 +28,7 @@ public abstract class Drink {
         this.name = name;
         this.pricePenny = price;
         this.quantity = amount;
+        this.inChange = new Change(price);
     }
     
     //getters
@@ -43,6 +47,10 @@ public abstract class Drink {
         return quantity;
     }
     
+    public Change getChange() {
+        return inChange;
+    }
+    
     //setters
     //
     //these are private and only used in DrinkFactory?
@@ -59,6 +67,10 @@ public abstract class Drink {
     
     private void setQuantity(int quantity){
         this.quantity = quantity;
+    }
+    
+    private void setChange(Change change) {
+        this.inChange = change;
     }
     
 }
