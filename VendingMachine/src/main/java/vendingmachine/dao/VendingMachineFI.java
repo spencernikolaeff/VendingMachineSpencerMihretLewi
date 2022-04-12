@@ -35,6 +35,10 @@ public class VendingMachineFI implements VendingMachineDao {
     public void addMoney(int amount) {
         this.userMoney.setTotal(userMoney.getTotal()+amount);
     }
+    
+    public double viewMoney() {
+        return userMoney.getTotal()/100;
+    }
 
     @Override
     public Drink addDrink(Drink drink) throws VendingMachineDaoEx {

@@ -68,5 +68,14 @@ public class VendingMachineView {
     public void displayErrorMessage(String error) {
         System.out.println("Recieved Error: " + error);
     }
+    
+    //view balance
+    public void viewBalanceBanner() {
+        System.out.println("==== View Balance ====");
+    }
+    
+    public void viewBalance(double n) {
+        System.out.println("Current Balance: $" + n);
+    }
 
 }

@@ -74,7 +74,7 @@ public class VendingMachineController {
     
     //view balance
     private void viewBalance() {
-        
+        view.viewBalance(dao.viewMoney());
     }
     
     //view drink
