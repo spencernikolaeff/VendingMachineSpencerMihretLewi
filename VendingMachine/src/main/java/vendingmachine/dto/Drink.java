@@ -18,17 +18,20 @@ public class Drink {
     private Change inChange;
     private int quantity;
     
+    private String id; //optional
+    
     //basic constructor
     public Drink(String name){
         this.name = name;
     }
     
     //full constructor
-    public Drink(String name, int price, int amount) {
+    public Drink(String name, int price, int amount, String id) {
         this.name = name;
         this.pricePenny = price;
         this.quantity = amount;
         this.inChange = new Change(price);
+        this.id = id; //optional
     }
     
     //getters
@@ -49,6 +52,15 @@ public class Drink {
     
     public Change getChange() {
         return inChange;
+    }
+    
+    //optional
+    public String getId() {
+        return id;
+    }
+    
+    public void setId(String id) {
+        this.id = id;
     }
     
     //setters
