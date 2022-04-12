@@ -109,5 +109,15 @@ public class VendingMachineView {
     public void exitMessage() {
         System.out.println("Goodbye! Don't forget to take your drinks!");
     }
+    
+    //list available drinks 
+    public void listAvailableDrinksBanner(int amount) {
+        System.out.println("==== Drinks For " + amount + " or less ====");
+    }
+    
+    //error message
+    public void errorMessage(String error){
+        io.print("Error Message: " + error);
+    }
 
 }

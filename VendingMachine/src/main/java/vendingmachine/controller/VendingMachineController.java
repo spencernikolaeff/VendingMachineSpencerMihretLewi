@@ -52,16 +52,24 @@ public class VendingMachineController {
                 case 5:
                     purchaseDrink();
                     break;
+                case 6:
+                    listAvailableDrinks();
                 case 0:
                     exit();
                     break;
                 default:
-                    errorMessage();
+                    errorMessage("No option chosen.");
             }
             System.out.println();
             System.out.println();
         }
     }
+    
+    //stream method
+    private void listAvailableDrinks() {
+        System.out.println("List available drinks");
+    }
+    
     
     //list drinks
     private void listDrinks() throws VendingMachineDaoEx {
@@ -101,8 +109,8 @@ public class VendingMachineController {
     }
     
     //error message
-    private void errorMessage() {
-        System.out.println("Error Message");
+    private void errorMessage(String error) {
+        view.errorMessage(error);
     }
     
 }
