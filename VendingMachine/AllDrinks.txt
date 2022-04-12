@@ -1,0 +1,10 @@
+Pepsi::125::10
+Cola::125::10
+Fanta Orange::150::5
+Fanta Grape::150::5
+Sprite::125::10
+Bud Light::300::10
+Coors Light::300::10
+Corona::350::10
+Boba Tea::450::5
+Mango Smoothie::500::3
