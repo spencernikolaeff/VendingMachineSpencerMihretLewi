@@ -34,13 +34,25 @@ public class VendingMachineFI implements VendingMachineDao {
     
     //change method
 
-    
+    //method for adding money
     public void addMoney(int amount) {
         this.userMoney.setTotal(userMoney.getTotal()+amount);
     }
     
+    //method for viewing money
     public double viewMoney() {
         return userMoney.getTotal()/100;
+    }
+    
+    //method for retrieving money
+    public boolean withdrawMoney(int amount) {
+        if(amount > userMoney.getTotal()) {
+            return false;
+        } else {
+            Change temp = new Change(amount);
+            userMoney = temp;
+            return true;
+        }
     }
 
     @Override
