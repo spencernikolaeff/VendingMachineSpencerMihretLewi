@@ -68,12 +68,12 @@ class VendingMachineFITest {
         drink1.setPrice(125);
         drink1.setQuantity(5);
 
-        // Create our second student
+        // Create our second drink
         Drink drink2 = new Drink("Sprite");
         drink2.setPrice(225);
         drink2.setQuantity(10);
 
-        // Add both our students to the DAO
+        // Add both our drinks to the DAO
         testDao.addDrink(drink1);
         testDao.addDrink(drink2);
 
@@ -111,6 +111,30 @@ class VendingMachineFITest {
 
     @Test
     public void testStockDrink() throws Exception {
+        // Create a drink
+        Drink drink = new Drink("Coke");
+        drink.setPrice(125);
+        drink.setQuantity(5);
 
+        // Create a 2nd drink
+        Drink drink2 = new Drink("Sprite");
+        drink2.setPrice(225);
+        drink2.setQuantity(0);
+
+        // call sell drink method
+        testDao.stockDrink(drink, 4);
+        testDao.stockDrink(drink2, 4);
+
+        int expectedDrink1 = 9;
+        int actualDrink1 = drink.getQuantity();
+
+        //Checks to see if quantity increases to 9 (stocked 4 so 4 + 5 = 9)
+        assertEquals(expectedDrink1, actualDrink1);
+
+        int expectedDrink2 = 4;
+        int actualDrink2 = drink2.getQuantity();
+
+        //Checks to see if quantity increases to 4 (stocked 4 so 4 + 0 = 4)
+        assertEquals(expectedDrink2, actualDrink2);
     }
 }

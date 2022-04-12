@@ -31,6 +31,7 @@ public class VendingMachineFI implements VendingMachineDao {
     Change userMoney = new Change(0);
     
     //change method
+
     
     public void addMoney(int amount) {
         this.userMoney.setTotal(userMoney.getTotal()+amount);
@@ -79,7 +80,7 @@ public class VendingMachineFI implements VendingMachineDao {
     @Override
     public Drink sellDrink(Drink drink) throws VendingMachineDaoEx {
         int temp = drink.getQuantity();
-        drink.setQuantity(temp--);
+        drink.setQuantity(temp - 1);
 
         return addDrink(drink);
     }
