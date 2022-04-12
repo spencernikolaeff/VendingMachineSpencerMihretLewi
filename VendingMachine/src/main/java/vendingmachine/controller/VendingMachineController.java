@@ -1,5 +1,6 @@
 package vendingmachine.controller;
 
+import java.util.List;
 import vendingmachine.dao.VendingMachineDaoEx;
 import vendingmachine.dao.VendingMachineFI;
 import vendingmachine.dto.Change;
@@ -66,8 +67,12 @@ public class VendingMachineController {
     }
     
     //stream method
-    private void listAvailableDrinks() {
-        System.out.println("List available drinks");
+    private void listAvailableDrinks() throws VendingMachineDaoEx {
+        view.listAvailableDrinksBanner1();
+        //Double price = view.getAvailableDrinksPrice();
+        List<Drink> temp = dao.getAllPurchasableDrinks();
+        //view.listAvailableDrinksBanner2(price);
+        view.displayAllDrink(temp);
     }
     
     

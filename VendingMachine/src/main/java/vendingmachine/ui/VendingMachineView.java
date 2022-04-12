@@ -111,8 +111,16 @@ public class VendingMachineView {
     }
     
     //list available drinks 
-    public void listAvailableDrinksBanner(int amount) {
-        System.out.println("==== Drinks For " + amount + " or less ====");
+    public void listAvailableDrinksBanner1() {
+        System.out.println("==== Affordable Drinks ====");
+    }
+    //banner two to show selected price
+    public void listAvailableDrinksBanner2(Double amount) {
+        System.out.println("==== Drinks For $" + amount + " or less ====");
+    }
+    //read input price for benchmark value
+    public Double getAvailableDrinksPrice() {
+        return io.readDouble("Please Enter a price to get drinks at or below that price");
     }
     
     //error message
