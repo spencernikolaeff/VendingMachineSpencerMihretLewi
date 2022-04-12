@@ -32,7 +32,11 @@ public class VendingMachineView {
         return io.readString("Please enter the product list :"); 
         
     }
-    public String listTheprice() {
+    public String EnterMoney() {
+        return io.readString("Please add money :"); 
+        
+    }
+    public String listhePrice() {
         return io.readString("Please enter the product price :"); 
         
     }
