@@ -78,11 +78,15 @@ public class VendingMachineFI implements VendingMachineDao {
     }
 
     @Override
-    public Drink sellDrink(Drink drink) throws VendingMachineDaoEx {
-        int temp = drink.getQuantity();
-        drink.setQuantity(temp - 1);
-
-        return addDrink(drink);
+    public boolean sellDrink(Drink drink) throws VendingMachineDaoEx {
+        if (userMoney.getTotal() > drink.getPricePenny()) {
+            int temp = drink.getQuantity();
+            drink.setQuantity(temp - 1);
+            userMoney.setTotal(userMoney.getTotal() - drink.getPricePenny());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private Drink unmarshallDrink(String drinkAsText){

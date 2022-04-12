@@ -34,5 +34,5 @@ public interface VendingMachineDao {
     Drink stockDrink(Drink drink, int quantity) throws VendingMachineDaoEx;
 
     //Sell a drink
-    Drink sellDrink(Drink drink) throws VendingMachineDaoEx;
+    boolean sellDrink(Drink drink) throws VendingMachineDaoEx;
 }
