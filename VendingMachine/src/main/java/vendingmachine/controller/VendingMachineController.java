@@ -82,7 +82,8 @@ public class VendingMachineController {
     //view drink
     private void viewDrink() throws VendingMachineDaoEx {
         view.displayViewDrinkBanner();
-        view.displayDrink(dao.getDrink(view.listTheProduct()));
+        String name = view.listTheProduct();
+        view.displayDrink(dao.getDrink(name));
     }
     
     //purchase drink
@@ -90,7 +91,7 @@ public class VendingMachineController {
         Drink temp = dao.getDrink(view.listTheProduct());
         view.displayDrink(temp);
         if(view.BuyDrink() == true){
-            dao.sellDrink(temp);
+            view.displayEnoughMoney(dao.sellDrink(temp));
         }
     }
     

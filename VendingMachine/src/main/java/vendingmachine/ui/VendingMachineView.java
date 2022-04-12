@@ -40,7 +40,7 @@ public class VendingMachineView {
     }
     
     public void displayDrink(Drink name) {
-        io.print("[Name] " + name.getName() + " [Price] " + name.getChange().getChangeString() + " [Quantity] " + name.getQuantity());
+        io.print("[Name] " + name.getName() + " [Price] " + name.getPricePenny() + " [Quantity] " + name.getQuantity());
     }
     
     //buyDrink
@@ -67,6 +67,15 @@ public class VendingMachineView {
     public void displayAddSuccessBanner() {
         io.readString(
                 "drink successfully added to your cart.  Please hit enter to continue");
+    }
+    
+    //check if they have enough money messages
+    public void displayEnoughMoney(boolean enough) {
+        if(enough) {
+            System.out.println("Drink Purchased Successfully");
+        } else {
+            System.out.println("You need to enter more money to purchase this drink...");
+        }
     }
     
     //displayAllDrink
