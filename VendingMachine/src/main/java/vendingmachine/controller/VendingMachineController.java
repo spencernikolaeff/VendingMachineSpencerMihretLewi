@@ -57,6 +57,7 @@ public class VendingMachineController {
                     listAvailableDrinks();
                 case 0:
                     exit();
+                    programRunning = false;
                     break;
                 default:
                     errorMessage("No option chosen.");

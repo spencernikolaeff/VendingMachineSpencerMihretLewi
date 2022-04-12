@@ -27,9 +27,10 @@ public class VendingMachineView {
         io.print("3. View Balance");
         io.print("4. View Drink");
         io.print("5. Purchase drink ");
+        io.print("6. Affordable Drinks");
         io.print("0. Exit");
 
-        return io.readInt("Please select from the above choices.", 0, 5);
+        return io.readInt("Please select from the above choices.", 0, 6);
     }
 
     //used to list individual drink
