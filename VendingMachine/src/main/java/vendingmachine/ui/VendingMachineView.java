@@ -4,6 +4,9 @@
  */
 package vendingmachine.ui;
 
+import java.util.List;
+import vendingmachine.dto.Drink;
+
 /**
  *
  * @author 17202
@@ -28,17 +31,38 @@ public class VendingMachineView {
 
         return io.readInt("Please select from the above choices.", 0, 5);
     }
+
     public String listTheProduct() {
-        return io.readString("Please enter the product list :"); 
-        
+        return io.readString("Please enter the product list :");
+
     }
+
     public String EnterMoney() {
-        return io.readString("Please add money :"); 
-        
+        return io.readString("Please add money :");
+
     }
+
     public String listhePrice() {
-        return io.readString("Please enter the product price :"); 
-        
+        return io.readString("Please enter the product price :");
+
     }
-    
+
+    public void displayAddDrinkBanner() {
+        io.print("====  Add Drink ====");
+    }
+
+    public void displayAddSuccessBanner() {
+        io.readString(
+                "drink successfully added to your cart.  Please hit enter to continue");
+    }
+
+    public void displayAllDrink(List<Drink> DrinkList) {
+        for (Drink currDrink : DrinkList) {
+            String DrinkInfo = String.format("[Name] %s  ",
+                    currDrink.getName());
+                    io.print(DrinkInfo);
+        }
+        io.readString("Press Enter to continue.");
+    }
+
 }
