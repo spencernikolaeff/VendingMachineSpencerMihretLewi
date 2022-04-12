@@ -3,6 +3,7 @@ package vendingmachine.controller;
 import vendingmachine.dao.VendingMachineDaoEx;
 import vendingmachine.dao.VendingMachineFI;
 import vendingmachine.dto.Change;
+import vendingmachine.dto.Drink;
 import vendingmachine.ui.UserIO;
 import vendingmachine.ui.UserIOConsoleImpl;
 import vendingmachine.ui.VendingMachineView;
@@ -86,9 +87,10 @@ public class VendingMachineController {
     
     //purchase drink
     private void purchaseDrink() throws VendingMachineDaoEx {
-        view.displayDrink(dao.getDrink(view.listTheProduct()));
+        Drink temp = dao.getDrink(view.listTheProduct());
+        view.displayDrink(temp);
         if(view.BuyDrink() == true){
-            
+            dao.sellDrink(temp);
         }
     }
     
