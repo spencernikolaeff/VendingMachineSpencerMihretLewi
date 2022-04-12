@@ -64,7 +64,8 @@ public class VendingMachineController {
     
     //list drinks
     private void listDrinks() {
-        
+        view.displayAllDrinkBanner();
+        view.displayAllDrink(dao.getAllDrinks());
     }
     
     //enter money

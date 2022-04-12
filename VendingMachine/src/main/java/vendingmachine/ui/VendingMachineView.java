@@ -55,6 +55,11 @@ public class VendingMachineView {
         io.readString(
                 "drink successfully added to your cart.  Please hit enter to continue");
     }
+    
+    //displayAllDrink
+    public void displayAllDrinkBanner() {
+        System.out.println("==== All Drinks ====");
+    }
 
     public void displayAllDrink(List<Drink> DrinkList) {
         for (Drink currDrink : DrinkList) {
